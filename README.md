@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # sv
 
 Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
@@ -36,3 +37,7 @@ npm run build
 You can preview the production build with `npm run preview`.
 
 > To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+=======
+# pack-file-viewer
+Pack-File-Viewer is a file management platform built with SvelteKit and TypeScript. Upload, preview, and organize resources with support for cloud storage and PostgreSQL.
+>>>>>>> 9f8d2724eaf412d47553991b39baeb5b4ff1ac6d
