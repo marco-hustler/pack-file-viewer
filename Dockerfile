@@ -4,9 +4,10 @@ FROM node:18
 WORKDIR /app
 
 COPY package*.json ./
-COPY . .
 
-RUN npm install
+RUN npm install --legacy-peer-deps
+
+COPY . .
 
 EXPOSE 5173
 

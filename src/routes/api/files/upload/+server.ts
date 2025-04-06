@@ -10,19 +10,22 @@ export async function POST({ request }) {
         const fileName = `${Date.now()}_${file.name}`
 
         // Caricamento su Supabase Storage
-        const { error: uploadError } = await supabase
+        console.log('File ricevuto:', file.name, file.type)
+
+        const { error: uploadError, data: uploadData } = await supabase
             .storage
-            .from('files')
+            .from('pack-files')
             .upload(fileName, file)
 
         if (uploadError) {
+            console.error('Errore durante upload su Supabase:', uploadError)
             return json({ error: 'Errore upload file', details: uploadError }, { status: 500 })
         }
 
         // Ottieni URL pubblico del file
         const { data: publicData } = supabase
             .storage
-            .from('files')
+            .from('pack-files')
             .getPublicUrl(fileName)
 
         const publicUrl = publicData?.publicUrl ?? ''

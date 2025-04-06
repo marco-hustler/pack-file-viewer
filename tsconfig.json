@@ -9,10 +9,6 @@
 		"skipLibCheck": true,
 		"sourceMap": true,
 		"strict": true,
-		"moduleResolution": "bundler",
-		"baseUrl": ".",                         // <-- aggiunto
-		"paths": {
-			"$lib/*": ["src/lib/*"]               // <-- aggiunto
-		}
+		"moduleResolution": "bundler"
 	}
 }
