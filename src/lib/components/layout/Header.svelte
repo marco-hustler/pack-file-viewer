@@ -43,6 +43,7 @@
         align-items: center;
         justify-content: space-between;
         padding: 1rem 2rem;
+        margin: 0 2rem;
         background-color: var(--color-white);
         border-bottom: 1px solid var(--color-gray-300);
         flex-wrap: wrap;
@@ -60,10 +61,8 @@
     .header__nav {
         display: flex;
         flex-wrap: wrap;
-        gap: 1.5rem;
+        gap: 2rem;
         list-style: none;
-        font-weight: 500;
-        font-size: 1rem;
         color: var(--color-gray-500);
         justify-content: center;
         flex: 1;
@@ -75,6 +74,8 @@
         padding-bottom: 0.25rem;
         transition: color 0.2s ease;
         white-space: nowrap;
+        font-size: 1.2rem;
+        font-weight: 600;
     }
 
     .header__item.active {
