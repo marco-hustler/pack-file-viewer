@@ -55,7 +55,9 @@
 
         const res = await fetch(apiEndpoint, {
             method: 'POST',
-            body: formData
+            body: formData,
+            mode: 'cors',
+            credentials: 'omit',
         });
 
         if (res.ok) {
