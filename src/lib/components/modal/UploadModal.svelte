@@ -13,10 +13,35 @@
     let roles: string[] = [];
     let file: File | null = null;
 
-    const categories = ['Leadership', 'Managing Complexity'];
-    const languages = ['en', 'it', 'es'];
-    const providers = ['Skilla', 'Linkedin', 'Pack', 'Mentor'];
-    const availableRoles = ['Mentor/Coach', 'Mentee/Coachee', 'Mentee/Coachee', 'Mentee/Coachee', 'Mentee/Coachee', 'Mentee/Coachee', 'Mentee/Coachee', 'Mentee/Coachee'];
+    const categories = [
+        'Leadership',
+        'Managing Complexity',
+        'Time Management',
+        'Communication Skills',
+        'Emotional Intelligence',
+        'Problem Solving',
+        'Teamwork',
+        'Project Management',
+        'Decision Making',
+        'Digital Skills'
+    ];
+
+    const languages = ['en', 'it', 'es', 'fr', 'de', 'pt', 'zh', 'ar', 'ru', 'ja'];
+
+    const providers = [
+        'Skilla',
+        'Linkedin',
+        'Pack',
+        'Mentor',
+        'Coursera',
+        'Udemy',
+        'edX',
+        'Khan Academy',
+        'Pluralsight',
+        'HubSpot Academy'
+    ];
+
+    const availableRoles = ['Mentor/Coach', 'Mentee/Coachee'];
 
     let openRoles = false;
 
