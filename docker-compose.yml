@@ -12,6 +12,7 @@ services:
       - DB_USER=postgres
       - DB_PASSWORD=postgres
       - DB_NAME=packfiledb
+      - ORIGIN=https://pack-file-viewer.onrender.com/
     depends_on:
       - db
 
