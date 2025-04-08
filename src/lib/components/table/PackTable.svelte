@@ -54,6 +54,7 @@
                 {#each columns as column}
                     <th>{column.label}</th>
                 {/each}
+                <th>Delete</th>
             </tr>
             </thead>
             <tbody>
@@ -74,6 +75,13 @@
                             {/if}
                         </td>
                     {/each}
+                    <td>
+                        <button class="delete-button" on:click={() => dispatch('delete', row.id)} aria-label="Delete">
+                            <svg class="delete-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" width="18" height="18">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                            </svg>
+                        </button>
+                    </td>
                 </tr>
             {/each}
             </tbody>
@@ -221,5 +229,21 @@
         display: flex;
         flex-direction: row;
         gap: 0.5rem;
+    }
+
+    .delete-button {
+        background: transparent;
+        border: none;
+        cursor: pointer;
+        padding: 0.25rem;
+    }
+
+    .delete-icon {
+        stroke: red;
+        transition: transform 0.2s ease;
+    }
+
+    .delete-button:hover .delete-icon {
+        transform: scale(1.1);
     }
 </style>

@@ -48,13 +48,27 @@
     onMount(loadFiles);
 </script>
 
-<PackTable {columns} {rows} on:upload={() => showModal = true} on:refresh={loadFiles}  on:view={handleViewFile}/>
+<PackTable {columns} {rows} on:upload={() => showModal = true} on:refresh={loadFiles}  on:view={handleViewFile}
+        on:delete={async (e) => {
+        const id = e.detail;
+        const res = await fetch(`/api/files/${id}`, { method: 'DELETE' });
+        if (res.ok) {
+            await loadFiles();
+            successMessage = 'File eliminato con successo!';
+            setTimeout(() => successMessage = '', 3000);
+        } else {
+            errorMessage = 'Errore durante l\'eliminazione del file.';
+            setTimeout(() => errorMessage = '', 3000);
+        }
+    }}
+/>
 
 {#if showModal}
     <UploadModal
         apiEndpoint="/api/files/upload"
         on:close={() => showModal = false}
         on:success={(e) => {
+            loadFiles();
             successMessage = e.detail.message;
             errorMessage = '';
             showModal = false;
