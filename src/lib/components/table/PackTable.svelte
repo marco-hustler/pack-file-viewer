@@ -64,8 +64,8 @@
                             {#if column.field === 'fileUrl'}
                                 <a
                                         href={row[column.field]}
-                                        target="_blank"
                                         class="file-link"
+                                        on:click|preventDefault={() => dispatch('view', { url: row[column.field] })}
                                 >View File</a>
                             {:else if Array.isArray(row[column.field])}
                                 {row[column.field].join(', ')}

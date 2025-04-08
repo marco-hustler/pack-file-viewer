@@ -2,6 +2,7 @@
     import { onMount } from 'svelte';
     import PackTable from '$lib/components/table/PackTable.svelte';
     import UploadModal from '$lib/components/modal/UploadModal.svelte';
+    import FileModal from '$lib/components/modal/FileModal.svelte';
     import type { PackFileInterface } from '$lib/types/index.ts';
 
     const columns = [
@@ -18,6 +19,14 @@
     let showModal = false;
     let successMessage = '';
     let errorMessage = '';
+
+    let selectedFileUrl: string | null = null;
+    let showFileModal = false;
+
+    function handleViewFile(event) {
+        selectedFileUrl = event.detail.url;
+        showFileModal = true;
+    }
 
     async function loadFiles() {
         try {
@@ -39,7 +48,7 @@
     onMount(loadFiles);
 </script>
 
-<PackTable {columns} {rows} on:upload={() => showModal = true} on:refresh={loadFiles} />
+<PackTable {columns} {rows} on:upload={() => showModal = true} on:refresh={loadFiles}  on:view={handleViewFile}/>
 
 {#if showModal}
     <UploadModal
@@ -67,7 +76,9 @@
     <div class="banner error">{errorMessage}</div>
 {/if}
 
-
+{#if showFileModal && selectedFileUrl}
+    <FileModal fileUrl={selectedFileUrl} onClose={() => showFileModal = false} />
+{/if}
 
 <style>
     .banner {
