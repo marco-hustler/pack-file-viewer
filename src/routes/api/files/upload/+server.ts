@@ -9,13 +9,18 @@ export async function POST({ request }) {
         const file = data.get('file') as File
         const fileName = `${Date.now()}_${file.name}`
 
+        const arrayBuffer = await file.arrayBuffer();
+        const buffer = new Uint8Array(arrayBuffer);
+
         // Caricamento su Supabase Storage
         console.log('File ricevuto:', file.name, file.type)
 
         const { error: uploadError, data: uploadData } = await supabase
             .storage
             .from('pack-files')
-            .upload(fileName, file)
+            .upload(fileName, buffer, {
+                contentType: file.type
+            });
 
         if (uploadError) {
             console.error('Errore durante upload su Supabase:', uploadError)
